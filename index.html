@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>CheapFinder</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;1,200;1,300;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="app">
+    <section>
+    <div class="header">
+        <div class="header__container">
+            <div class="header__logo">
+             <span class="header__log_title">CHEAPFINDER</span>
+               <div class="header__logo-container">
+                   <img src="assets/logo.png" alt="">
+               </div>
+            </div>
+            <div class="header__items">
+                <div class="search__items">
+                    <input type="search" placeholder="Поиск товаров">
+                </div>
+                <div class="findButton">
+                    <input type="submit" value="Найти">
+                </div>
+            </div>
+        </div>
+        <div class="under__header" v-if="currentPage==='home'">
+            <div class="assortment">
+                <ul class="assortment__list">
+                    <li v-on:mouseover="() => { hideElements(); hideElementss(); }"><a  @mouseover="showElement"  class="hover__title" href="#">Гаджеты</a ></li>
+                    <li v-on:mouseover="() => { hideElement(); hideElementss(); }"><a   @mouseover="showElements" class="hover__title" href="#">Компьютеры</a></li>
+                    <li v-on:mouseover="() => { hideElement(); hideElements(); }" ><a  @mouseover="showElementss" class="hover__title" href="#">Спорт</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="line" v-if="currentPage==='home'" ><hr></div>
+        <div class="hover__items"  @mouseleave="hideElement" v-if="currentPage==='home'">
+            <div class="links" v-if="isVisible===true" >
+                <div v-for="link in links.slice(0,3)" :key="link.id"  >
+                    <a href="#"><img :src="'assets/' + link.img" alt="" class=""></a>
+                    <a href="#"><h3>{{ link.name }}</h3></a>
+                </div>
+            </div>
+            <div class="links" v-if="isVisiblee===true" @mouseleave="hideElements">
+                <div v-for="link in links.slice(3,5)" :key="link.id"  >
+                    <a href="#"><img :src="'assets/' + link.img" alt=""></a>
+                    <a href="#"><h3>{{ link.name }}</h3></a>
+                </div>
+            </div>
+            <div class="links" v-if="isVisibleee===true" @mouseleave="hideElementss">
+                <div v-for="link in links.slice(5,6)" :key="link.id"  >
+                    <a href="#"><img :src="'assets/' + link.img" alt=""></a>
+                    <a href="#"><h3>{{ link.name }}</h3></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+<!---------------------------------------------------------------------------------------------------------------------------->
+    <section>
+        <div class="wrapper">
+            <div class="pagination ">
+
+            </div>
+            <div class="slider" >
+
+                <div class="slide"  style="background-color: #FFC0CB" >
+                    <a href=""><img src="assets/iphone13.png" alt="" class="slide__img"></a>
+                    <div class="slide__title">
+                        <img src="assets/applelogo.png" alt="">
+
+                      <b><span>iPhone 14<p>Теперь Розовый</p></span></b>
+                        <div class="characterization">
+                           <p>Встроенная память 8/126 ГБ</p>
+                            <p>Заряд батареи 3095 мА·ч </p>
+                              <div class="characterization__span"> Основная камера (Мп)12 + 12</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide"  style="background-color:lightgray"><a href=""><img class="slide__img" src="assets/Airpods.png" alt=""></a></div>
+                <div class="slide"  style="background-color: darkgrey"><a href=""><img class="slide__img" src="assets/GPU.png" alt=""></a></div>
+
+
+                <button class="prevBtn">&#10094;</button>
+                <button class="nextBtn">&#10095;</button>
+
+
+            </div>
+        </div>
+
+    </section>
+    <!---------------------------------------------------------------------------------------------------------------------------------------------->
+
+    <section style="padding-bottom: 100px">
+        <div class="popular__title">
+            <h2>Популярные модели</h2>
+        </div>
+        <div class="popular__container">
+
+            <div class="popular__items" v-for="item in popular">
+                <div class="popular__img"><a href=""><img :src="'assets/'+item.img" alt="" ></a></div>
+                <div class="popular__name">
+                    <div class="popular__name-items"><a href="#">{{item.name}}</a></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!---------------------------------------------------------------------------------------------------------------------------------------------->
+    <section>
+        <footer class="footer">
+            <hr style="width: 100%;height: 2px;margin-bottom: 50px;opacity: .5;">
+            <div class="about__container">
+                <div class="about">
+                     <h2>О проекте</h2>
+                    <a href="#"> <h3>Помощь проекту</h3></a>
+                    <a href="#"> <h3>Конфиденциальность</h3></a>
+                    <a href="#"> <h3>Вопросы</h3></a>
+                </div>
+                <div class="region" >
+                     <h2>Регион</h2>
+                    <a href="#"> <h3>Россия</h3></a>
+                </div>
+                <div class="where">
+                    <h2>Где нас найти</h2>
+                    <div class="where__img">
+                        <a href="#"><img src="assets/facebook-logo.png" alt=""></a>
+                        <a href="#"><img src="assets/VK.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </section>
+
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="js/app.js"></script>
+<script src="js/index.js"></script>
+
+
+</body>
+</html>
